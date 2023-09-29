@@ -21,29 +21,45 @@ const determineWinner = (userChoice, computerChoice) => {
   }
 };
 
-const game = () => {
-  let userWins = 0;
-  let computerWins = 0;
+const updateResults = (playerChoice, computerChoice, result) => {
+  const playerChoiceElement = document.getElementById("playerChoice");
+  const computerChoiceElement = document.getElementById("computerChoice");
+  const winnerElement = document.getElementById("winner");
 
-  for (let round = 1; round <= 5; round++) {
-    const userChoice = prompt(`Round ${round}: Choose Rock, Paper, or Scissors:`);
-    const computerChoice = getComputerChoice();
-    const roundResult = determineWinner(userChoice, computerChoice);
-    console.log(`Round ${round}: ${roundResult}`);
-
-    if (roundResult === "You won!") {
-      userWins++;
-    } else if (roundResult === "You lost!") {
-      computerWins++;
-    }
-  }
-  if (userWins > computerWins) {
-    console.log("You won the game!");
-  } else if (userWins < computerWins) {
-    console.log("You lost the game!");
-  } else {
-    console.log("The game is a tie!");
-  }
+  playerChoiceElement.textContent = `Player chose: ${playerChoice}`;
+  computerChoiceElement.textContent = `Computer chose: ${computerChoice}`;
+  winnerElement.textContent = `Winner: ${result}`;
 };
 
-game();
+const playGame = (playerChoice) => {
+  const computerChoice = getComputerChoice();
+  const result = determineWinner(playerChoice, computerChoice);
+  updateResults(playerChoice, computerChoice, result);
+};
+
+// const game = () => {
+//   let userWins = 0;
+//   let computerWins = 0;
+
+//   for (let round = 1; round <= 5; round++) {
+//     const userChoice = prompt(`Round ${round}: Choose Rock, Paper, or Scissors:`);
+//     const computerChoice = getComputerChoice();
+//     const roundResult = determineWinner(userChoice, computerChoice);
+//     console.log(`Round ${round}: ${roundResult}`);
+
+//     if (roundResult === "You won!") {
+//       userWins++;
+//     } else if (roundResult === "You lost!") {
+//       computerWins++;
+//     }
+//   }
+//   if (userWins > computerWins) {
+//     console.log("You won the game!");
+//   } else if (userWins < computerWins) {
+//     console.log("You lost the game!");
+//   } else {
+//     console.log("The game is a tie!");
+//   }
+// };
+
+// game();

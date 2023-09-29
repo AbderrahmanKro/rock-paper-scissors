@@ -4,12 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="script.js"></script>
   <title>Rock Paper Scissors</title>
 </head>
 
 <body>
-
+  <div>
+    <h1>Rock Paper Scissors</h1>
+    <p>Choose your weapon!</p>
+    <button onclick="playGame('Rock')">Rock</button>
+    <button onclick="playGame('Paper')">Paper</button>
+    <button onclick="playGame('Scissors')">Scissors</button>
+    <div id="result">
+      <h3>Result</h3>
+      <p id="playerChoice">Player chose: </p>
+      <p id="computerChoice">Computer chose: </p>
+      <p id="winner">Winner: </p>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
