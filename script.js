@@ -1,3 +1,6 @@
+let computerScore = 0;
+let playerScore = 0;
+
 const getComputerChoice = () => {
   const choices = ["Rock", "Paper", "Scissors"];
   const randomIndex = Math.floor(Math.random() * choices.length);
@@ -29,9 +32,34 @@ const updateResults = (playerChoice, computerChoice, result) => {
   playerChoiceElement.textContent = `Player chose: ${playerChoice}`;
   computerChoiceElement.textContent = `Computer chose: ${computerChoice}`;
   winnerElement.textContent = `Winner: ${result}`;
+
+  if (result === "You won!") {
+    playerScore++;
+  } else if (result === "You lost!") {
+    computerScore++;
+  }
+  const playerScoreElement = document.getElementById("playerScore");
+  const computerScoreElement = document.getElementById("computerScore");
+  playerScoreElement.textContent = `Player Score: ${playerScore}`;
+  computerScoreElement.textContent = `Computer Score: ${computerScore}`;
+
+  if (playerScore === 5) {
+    winnerElement.textContent = `Player won the game!`;
+    playerScore = 0;
+    computerScore = 0;
+  } else if (computerScore === 5) {
+    winnerElement.textContent = `Computer won the game!`;
+    playerScore = 0;
+    computerScore = 0;
+  }
 };
 
 const playGame = (playerChoice) => {
+  if (playerScore === 5 || computerScore === 5) {
+    playerScore = 0;
+    computerScore = 0;
+  }
+
   const computerChoice = getComputerChoice();
   const result = determineWinner(playerChoice, computerChoice);
   updateResults(playerChoice, computerChoice, result);
