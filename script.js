@@ -26,10 +26,10 @@ const game = () => {
   let computerWins = 0;
 
   for (let round = 1; round <= 5; round++) {
-    const userChoice = prompt("Round ${round}: Choose Rock, Paper, or Scissors:");
+    const userChoice = prompt(`Round ${round}: Choose Rock, Paper, or Scissors:`);
     const computerChoice = getComputerChoice();
     const roundResult = determineWinner(userChoice, computerChoice);
-    console.log("Round ${round}: ${roundResult}");
+    console.log(`Round ${round}: ${roundResult}`);
 
     if (roundResult === "You won!") {
       userWins++;
